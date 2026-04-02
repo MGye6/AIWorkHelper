@@ -34,7 +34,7 @@ public class ChatController {
      * @param request 聊天请求
      * @return 统一响应格式包装的聊天响应
      */
-    @PostMapping
+    @PostMapping("/chat")
     public ApiResponse<ChatResponse> chat(@RequestBody ChatRequest request) {
         // 获取当前登录用户ID
         String userId = SecurityUtils.getCurrentUserId();

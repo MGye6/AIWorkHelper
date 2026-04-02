@@ -46,7 +46,7 @@ spring:
   # Spring AI DashScope 配置
   ai:
     dashscope:
-      api-key: sk-45e155e83f524602b19b7c67e45512d9
+      api-key: sk-265d535de5124a2dbe6d1ed1600538d5
       base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
       chat:
         options:
@@ -58,7 +58,7 @@ spring:
 
 # 服务器配置
 server:
-  port: 8888
+  port: 8080
   servlet:
     context-path: /
 
@@ -92,14 +92,13 @@ ai:
     # 当对话超过此限制时，自动调用LLM生成摘要，保留关键信息
     # 默认2000字符，约等于3000 tokens
     max-token-limit: 2000
-
-# Skills 配置
-ai:
   skills:
     enabled: true
     path: src/main/java/com/aiwork/helper/skills
     enabled-skills:
       - amap-weather
+
+# Skills 配置
 
 # 文件上传配置
 upload:

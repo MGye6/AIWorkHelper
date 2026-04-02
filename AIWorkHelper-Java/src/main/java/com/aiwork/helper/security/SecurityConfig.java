@@ -67,16 +67,19 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                     // 登录接口允许匿名访问
                     .requestMatchers("/v1/user/login").permitAll()
-
-                    // WebSocket连接允许访问（在WebSocket层面进行Token验证）
+                
+                    // WebSocket 连接允许访问（在 WebSocket 层面进行 Token 验证）
                     .requestMatchers("/ws/**").permitAll()
-
+                
                     // 健康检查接口允许访问
                     .requestMatchers("/actuator/**").permitAll()
-
+                
                     // 知识库诊断接口允许访问
                     .requestMatchers("/api/knowledge/diag/**").permitAll()
-
+                
+                    // Chat 接口允许匿名访问（用于测试天气查询 Skill）
+                    .requestMatchers("/v1/chat/**").permitAll()
+                
                     // 其他所有请求都需要认证
                     .anyRequest().authenticated()
                 )

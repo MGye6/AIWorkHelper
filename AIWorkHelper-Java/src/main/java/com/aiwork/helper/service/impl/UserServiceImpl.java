@@ -47,27 +47,28 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 系统启动时初始化管理员用户
-     * 对应Go: svc/servicecontext.go initUser
+     * 对应 Go: svc/servicecontext.go initUser
+     * 注意：暂时禁用此方法以避免 MongoDB 依赖
      */
-    @PostConstruct
-    @Override
+    // @PostConstruct
+    // @Override
     public void initAdminUser() {
         // 检查是否已存在管理员用户
         if (userRepository.findByIsAdminTrue().isPresent()) {
             log.info("Admin user already exists");
             return;
         }
-
+    
         // 创建默认管理员用户
         User admin = new User();
         admin.setName("root");
-        // 密码: 123456 (BCrypt加密后)
+        // 密码：123456 (BCrypt 加密后)
         admin.setPassword("$2a$10$/UfHc5FZSS.gj7C7uWIOWeTao//mq.OMdmgSpW09AbCopkWPwl59e");
         admin.setStatus(0);
         admin.setIsAdmin(true);
         admin.setCreateAt(System.currentTimeMillis() / 1000);
         admin.setUpdateAt(System.currentTimeMillis() / 1000);
-
+    
         userRepository.save(admin);
         log.info("Admin user initialized successfully");
     }

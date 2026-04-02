@@ -87,15 +87,16 @@ public class VectorStoreService {
 
     /**
      * 初始化 Lettuce 连接和向量索引
+     * 注意：暂时禁用以避免 Redis 依赖
      */
-    @PostConstruct
+    // @PostConstruct
     public void init() {
         // 创建 Lettuce 客户端（用于执行 RediSearch 命令）
         String redisUri = String.format("redis://%s:%d", redisHost, redisPort);
         lettuceClient = RedisClient.create(redisUri);
         lettuceConnection = lettuceClient.connect(ByteArrayCodec.INSTANCE);
-        log.info("Lettuce 连接创建成功: {}", redisUri);
-
+        log.info("Lettuce 连接创建成功：{}", redisUri);
+    
         createIndexIfNotExists();
     }
 

@@ -18,7 +18,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @Document(collection = "chat_log")
 public class ChatLog {
-
     @Id
     private String id;
 

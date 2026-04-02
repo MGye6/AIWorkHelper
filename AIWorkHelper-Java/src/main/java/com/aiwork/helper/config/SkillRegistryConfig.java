@@ -30,14 +30,6 @@ public class SkillRegistryConfig {
      * 从 skills/AMap/SKILL.md 加载 skill 定义
      * 对应的 Tool 实现为 WeatherTools
      */
-    @Bean
-    public org.springframework.ai.tool.method.MethodToolCallbackProvider amapWeatherSkill(
-            com.aiwork.helper.ai.tools.WeatherTools weatherTools) {
-        log.info("注册高德天气 Skill (amap-weather)");
-        return org.springframework.ai.tool.method.MethodToolCallbackProvider.builder()
-                .toolObjects(weatherTools)
-                .build();
-    }
 
     /**
      * 预留更多 Skill 注册位置
