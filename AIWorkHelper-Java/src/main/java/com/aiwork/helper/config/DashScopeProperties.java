@@ -1,6 +1,6 @@
 /**
- * @author: 公众号：IT杨秀才
- * @doc:后端，AI知识进阶，后端面试场景题大全：https://golangstar.cn/
+ * @author: 公众号：IT 杨秀才
+ * @doc:后端，AI 知识进阶，后端面试场景题大全：https://golangstar.cn/
  */
 package com.aiwork.helper.config;
 
@@ -9,22 +9,23 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * author:  公众号：IT杨秀才
- * 后端，AI知识进阶，后端面试场景题大全：https://golangstar.cn/
- * DashScope配置属性
+ * author:  公众号：IT 杨秀才
+ * 后端，AI 知识进阶，后端面试场景题大全：https://golangstar.cn/
+ * DashScope 配置属性
+ * 注意：新版本 Spring AI Alibaba 使用 spring.ai.dashscope 前缀
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "dashscope")
+@ConfigurationProperties(prefix = "spring.ai.dashscope")
 public class DashScopeProperties {
 
     /**
-     * API密钥
+     * API 密钥
      */
     private String apiKey;
 
     /**
-     * 基础URL
+     * 基础 URL
      */
     private String baseUrl;
 

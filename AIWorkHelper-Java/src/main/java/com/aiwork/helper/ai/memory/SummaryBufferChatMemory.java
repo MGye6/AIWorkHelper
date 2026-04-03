@@ -95,24 +95,23 @@ public class SummaryBufferChatMemory implements ChatMemory {
     }
 
     @Override
-    public List<Message> get(String conversationId, int lastN) {
+    public List<Message> get(String conversationId) {
         List<Message> result = new ArrayList<>();
 
         // 1. 先添加摘要（如果有）
         String summary = summaryBuffer.get(conversationId);
         if (summary != null && !summary.isEmpty()) {
-            result.add(new SystemMessage("之前的对话摘要: " + summary));
+            result.add(new SystemMessage("之前的对话摘要：" + summary));
         }
 
-        // 2. 添加最近的对话历史
+        // 2. 添加所有对话历史（不再使用 lastN 参数）
         List<Message> history = conversationHistory.get(conversationId);
         if (history != null && !history.isEmpty()) {
-            int startIndex = Math.max(0, history.size() - lastN);
-            result.addAll(history.subList(startIndex, history.size()));
+            result.addAll(history);
         }
 
-        log.debug("获取会话记忆: conversationId={}, lastN={}, resultSize={}",
-                conversationId, lastN, result.size());
+        log.debug("获取会话记忆：conversationId={}, resultSize={}",
+                conversationId, result.size());
 
         return result;
     }

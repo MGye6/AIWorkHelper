@@ -55,9 +55,9 @@ public class MultiSessionChatMemory implements ChatMemory {
     }
 
     @Override
-    public List<Message> get(String conversationId, int lastN) {
+    public List<Message> get(String conversationId) {
         ChatMemory memory = getOrCreateMemory(conversationId);
-        return memory.get(conversationId, lastN);
+        return memory.get(conversationId);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class MultiSessionChatMemory implements ChatMemory {
         if (memory != null) {
             memory.clear(conversationId);
             memories.remove(conversationId);
-            log.info("会话记忆已清除: conversationId={}", conversationId);
+            log.info("会话记忆已清除：conversationId={}", conversationId);
         }
     }
 

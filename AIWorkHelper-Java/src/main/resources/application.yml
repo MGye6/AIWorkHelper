@@ -43,7 +43,7 @@ spring:
       name: admin
       password: admin
 
-  # Spring AI DashScope 配置
+  # Spring AI DashScope 配置 (新版本使用 spring.ai.dashscope 前缀)
   ai:
     dashscope:
       api-key: sk-265d535de5124a2dbe6d1ed1600538d5
@@ -72,25 +72,15 @@ websocket:
 jwt:
   # 密钥至少需要 256 bits (32 字节)，这里使用 64 字符的密钥确保足够安全
   secret: kuangbiao.camps.aiworkhelper.jwt.secret.key.2024.secure.minimum.256bits
-  # Token 过期时间（秒），8640000秒 = 100天
+  # Token 过期时间（秒），8640000 秒 = 100 天
   expire: 8640000
-
-# 自定义 DashScope 配置（保留用于自定义代码）
-dashscope:
-  api-key: sk-45e155e83f524602b19b7c67e45512d9
-  base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
-  chat:
-    model: qwen-max
-    temperature: 0.7
-  embedding:
-    model: text-embedding-v3
 
 # AI Agent 记忆配置
 ai:
   memory:
-    # 最大Token限制（字符数估算，约等于1.5倍的token数）
-    # 当对话超过此限制时，自动调用LLM生成摘要，保留关键信息
-    # 默认2000字符，约等于3000 tokens
+    # 最大 Token 限制（字符数估算，约等于 1.5 倍的 token 数）
+    # 当对话超过此限制时，自动调用 LLM 生成摘要，保留关键信息
+    # 默认 2000 字符，约等于 3000 tokens
     max-token-limit: 2000
   skills:
     enabled: true
